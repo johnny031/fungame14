@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <link rel="stylesheet" href="//code.jquery.com/mobile/1.5.0-alpha.1/jquery.mobile-1.5.0-alpha.1.min.css">
+    <title>fungame14</title>
+</head>
+<body>
+    <div class="setting">
+        <h3 class="setting_heading">設定</h3>
+        <hr>
+        <div class="setting_container">
+            <label for="size">選擇盤面大小</label>
+            <select name="board_size" id="size">
+                <option value="3">3 X 3</option>
+                <option value="4">4 X 4</option>
+                <option value="5" selected>5 X 5</option>
+                <option value="6">6 X 6</option>
+                <option value="7">7 X 7</option>
+            </select>
+            <div>隱藏</div>
+            <button class="hide_btn">開</button>
+        </div>
+    </div>
+
+    <div class="line-container"></div>
+
+    <div class="container">
+        <div class="grid-container"></div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="//code.jquery.com/mobile/1.5.0-alpha.1/jquery.mobile-1.5.0-alpha.1.min.js"></script>
+    <script src="swipe_function.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
