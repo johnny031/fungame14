@@ -98,6 +98,10 @@ select[name="board_size"] {
 }
 
 [data-color="6"] {
+    background-image: radial-gradient(circle, rgb(255, 176, 123), rgb(199, 87, 13) 58%, rgb(214, 106, 35) 60%, transparent 60%);
+}
+
+[data-color="7"] {
     background-image: radial-gradient(circle, rgb(198, 123, 255), rgb(96, 20, 154) 58%, rgb(126, 32, 199) 60%, transparent 60%);
 }
 
