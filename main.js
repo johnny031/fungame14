@@ -14,11 +14,12 @@ function delay() {
     stop = true
     setTimeout(() => {
         stop = false
-    }, 500)
+    }, 620)
 }
 
 function render_board(size) {
-    $(".grid-container").html("")
+    $(".grid-container").find(".grid-item").remove();
+    $(".line-container").find(".line-item").remove();
     all_color = []
     $(".hide_btn").html("開")
 
@@ -60,8 +61,8 @@ $("body").on("swipeup", ".grid-container [data-x]", function(e) {
     })
     color_set.push(color_set.shift())
 
-    $(`[data-x=${x}]`).animate({top: '-=100%'}, { duration: 400, queue: false });
-    $(`[data-x=${x}][data-y="0"]`).animate({opacity: 0});
+    $(`[data-x=${x}]`).animate({top: '-=100%'}, { duration: 300, queue: false });
+    $(`[data-x=${x}][data-y="0"]`).animate({opacity: 0}, { duration: 300 });
 
     setTimeout(() => {
     $(`[data-x=${x}]`).animate({top: '+=100%'}, { duration: 0 })
@@ -70,11 +71,11 @@ $("body").on("swipeup", ".grid-container [data-x]", function(e) {
         $(this).attr("data-color", color_set[i])
     })
 
-    $(`[data-x=${x}][data-y=${grid_size - 1}]`).css("opacity", "0")
-    $(`[data-x=${x}][data-y=${grid_size - 1}]`).animate({opacity: 1}, { duration: 400 })
+    $(`[data-x=${x}][data-y=${grid_size - 1}]`).css("opacity", 0)
+    $(`[data-x=${x}][data-y=${grid_size - 1}]`).animate({opacity: 1}, { duration: 300 })
 
     $(`[data-x=${x}][data-y="0"]`).animate({opacity: 1}, { duration: 0 })
-}, 400);
+}, 300);
 })
 
 $("body").on("swipedown", ".grid-container [data-x]", function(e) {
@@ -92,8 +93,8 @@ $("body").on("swipedown", ".grid-container [data-x]", function(e) {
 
     color_set.unshift(color_set.pop())  
 
-    $(`[data-x=${x}]`).animate({top: '+=100%'}, { duration: 400, queue: false });
-    $(`[data-x=${x}][data-y=${grid_size - 1}]`).animate({opacity: 0});
+    $(`[data-x=${x}]`).animate({top: '+=100%'}, { duration: 300, queue: false });
+    $(`[data-x=${x}][data-y=${grid_size - 1}]`).animate({opacity: 0}, { duration: 300 });
 
     setTimeout(() => {
     $(`[data-x=${x}]`).animate({top: '-=100%'}, { duration: 0 })
@@ -103,10 +104,10 @@ $("body").on("swipedown", ".grid-container [data-x]", function(e) {
     })
 
     $(`[data-x=${x}][data-y="0"]`).css("opacity", "0")
-    $(`[data-x=${x}][data-y="0"]`).animate({opacity: 1}, { duration: 400 })
+    $(`[data-x=${x}][data-y="0"]`).animate({opacity: 1}, { duration: 300 })
 
     $(`[data-x=${x}][data-y=${grid_size - 1}]`).animate({opacity: 1}, { duration: 0 })
-}, 400);
+}, 300);
 })
 
 $("body").on("swipeleft", ".grid-container [data-y]", function(e) {
@@ -124,8 +125,8 @@ $("body").on("swipeleft", ".grid-container [data-y]", function(e) {
 
     color_set.push(color_set.shift())  
 
-    $(`[data-y=${y}]`).animate({left: '-=100%'}, { duration: 400, queue: false });
-    $(`[data-y=${y}][data-x="0"]`).animate({opacity: 0});
+    $(`[data-y=${y}]`).animate({left: '-=100%'}, { duration: 300, queue: false });
+    $(`[data-y=${y}][data-x="0"]`).animate({opacity: 0}, { duration: 300 });
 
     setTimeout(() => {
     $(`[data-y=${y}]`).animate({left: '+=100%'}, { duration: 0 })
@@ -135,10 +136,10 @@ $("body").on("swipeleft", ".grid-container [data-y]", function(e) {
     })
 
     $(`[data-y=${y}][data-x=${grid_size - 1}]`).css("opacity", 0)
-    $(`[data-y=${y}][data-x=${grid_size - 1}]`).animate({opacity: 1}, { duration: 400 })
+    $(`[data-y=${y}][data-x=${grid_size - 1}]`).animate({opacity: 1}, { duration: 300 })
 
     $(`[data-y=${y}][data-x="0"]`).animate({opacity: 1}, { duration: 0 })
-}, 400);
+}, 300);
 })
 
 $("body").on("swiperight", ".grid-container [data-y]", function(e) {
@@ -156,8 +157,8 @@ $("body").on("swiperight", ".grid-container [data-y]", function(e) {
 
     color_set.unshift(color_set.pop())   
 
-    $(`[data-y=${y}]`).animate({left: '+=100%'}, { duration: 400, queue: false });
-    $(`[data-y=${y}][data-x=${grid_size - 1}]`).animate({opacity: 0});
+    $(`[data-y=${y}]`).animate({left: '+=100%'}, { duration: 300, queue: false });
+    $(`[data-y=${y}][data-x=${grid_size - 1}]`).animate({opacity: 0}, { duration: 300 });
 
     setTimeout(() => {
     $(`[data-y=${y}]`).animate({left: '-=100%'}, { duration: 0 })
@@ -167,10 +168,10 @@ $("body").on("swiperight", ".grid-container [data-y]", function(e) {
     })
 
     $(`[data-y=${y}][data-x="0"]`).css("opacity", 0)
-    $(`[data-y=${y}][data-x="0"]`).animate({opacity: 1}, { duration: 400 })
+    $(`[data-y=${y}][data-x="0"]`).animate({opacity: 1}, { duration: 300 })
 
     $(`[data-y=${y}][data-x=${grid_size - 1}]`).animate({opacity: 1}, { duration: 0 })
-}, 400);
+}, 300);
 })
 
 $(".setting_heading").on("click", function () {

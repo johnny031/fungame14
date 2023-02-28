@@ -2,10 +2,6 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    user-select: none;
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -ms-user-select: none;
     font-family: Arial;
 }
 
@@ -14,7 +10,7 @@ body {
 }
 
 .container {
-    background-color: gray;
+    background-image: radial-gradient(circle, rgb(153, 199, 113), rgb(2, 2, 58));
     height: 100vh;
     display: flex;
     align-items: center;
@@ -25,10 +21,11 @@ body {
     position: absolute;
     top: 5px;
     left: 5px;
-    border: 1px solid black;
+    border: 1px solid rgb(2, 2, 58);
+    color:rgb(2, 2, 58);
     z-index: 1;
     border-radius: 3px;
-    background-color: rgba(255, 255, 255, 0.9);
+    background-color: rgba(235, 241, 233, 0.9);
     padding: 5px;
     z-index: 999;
 }
@@ -52,11 +49,15 @@ select[name="board_size"] {
 }
 
 .grid-container {
-    background-color: black;
+    --grid-padding: 6vmin;
+    --offset: calc((100vmin - var(--grid-padding) * 2) / 2 / var(--grid-size));
+    left: 0;
+    background-image: radial-gradient(circle, rgb(51, 51, 51), rgb(0, 0, 0));
     border: 1px solid rgb(37, 138, 254);
+    box-shadow: 0px 0px 15px rgb(11, 46, 86);
     width: 100vmin;
     height: 100vmin;
-    padding: 6vmin;
+    padding: var(--grid-padding);
     display: grid;
     grid-template-columns: repeat(var(--grid-size, 5), 1fr);
     position: relative;
@@ -100,13 +101,16 @@ select[name="board_size"] {
     background-image: radial-gradient(circle, rgb(198, 123, 255), rgb(96, 20, 154) 58%, rgb(126, 32, 199) 60%, transparent 60%);
 }
 
+.line-container {
+    position: absolute;
+}
+
 .line-item {
-    position: fixed;
+    position: absolute;
     z-index: 0;
 }
 
 [data-line-y] {
-    left: 0;
     background: rgb(37, 138, 254);
     height: 1px;
     width: 100vmin;
@@ -114,35 +118,35 @@ select[name="board_size"] {
 }
 
 [data-line-y="0"] {
-    top: calc((100vmax - 100vmin) / 2 + 6vmin + 44vmin / var(--grid-size) * 1);
+    top : calc(var(--grid-padding) + var(--offset) * 1);
 }
 
 [data-line-y="1"] {
-    top: calc((100vmax - 100vmin) / 2 + 6vmin + 44vmin / var(--grid-size) * 3);
+    top : calc(var(--grid-padding) + var(--offset) * 3);
 }
 
 [data-line-y="2"] {
-    top: calc((100vmax - 100vmin) / 2 + 6vmin + 44vmin / var(--grid-size) * 5);
+    top : calc(var(--grid-padding) + var(--offset) * 5);
 }
 
 [data-line-y="3"] {
-    top: calc((100vmax - 100vmin) / 2 + 6vmin + 44vmin / var(--grid-size) * 7);
+    top : calc(var(--grid-padding) + var(--offset) * 7);
 }
 
 [data-line-y="4"] {
-    top: calc((100vmax - 100vmin) / 2 + 6vmin + 44vmin / var(--grid-size) * 9);
+    top : calc(var(--grid-padding) + var(--offset) * 9);
 }
 
 [data-line-y="5"] {
-    top: calc((100vmax - 100vmin) / 2 + 6vmin + 44vmin / var(--grid-size) * 11);
+    top : calc(var(--grid-padding) + var(--offset) * 11);
 }
 
 [data-line-y="6"] {
-    top: calc((100vmax - 100vmin) / 2 + 6vmin + 44vmin / var(--grid-size) * 13);
+    top : calc(var(--grid-padding) + var(--offset) * 13);
 }
 
 [data-line-x] {
-    top: calc((100vmax - 100vmin) / 2);
+    top: 0;
     background: rgb(37, 138, 254);
     height: 100vmin;
     width: 1px;
@@ -150,64 +154,64 @@ select[name="board_size"] {
 }
 
 [data-line-x="0"] {
-    left: calc(6vmin + 44vmin / var(--grid-size) * 1);
+    left: calc(var(--grid-padding) + var(--offset) * 1);
 }
 
 [data-line-x="1"] {
-    left: calc(6vmin + 44vmin / var(--grid-size) * 3);
+    left: calc(var(--grid-padding) + var(--offset) * 3);
 }
 
 [data-line-x="2"] {
-    left: calc(6vmin + 44vmin / var(--grid-size) * 5);
+    left: calc(var(--grid-padding) + var(--offset) * 5);
 }
 
 [data-line-x="3"] {
-    left: calc(6vmin + 44vmin / var(--grid-size) * 7);
+    left: calc(var(--grid-padding) + var(--offset) * 7);
 }
 
 [data-line-x="4"] {
-    left: calc(6vmin + 44vmin / var(--grid-size) * 9);
+    left: calc(var(--grid-padding) + var(--offset) * 9);
 }
 
 [data-line-x="5"] {
-    left: calc(6vmin + 44vmin / var(--grid-size) * 11);
+    left: calc(var(--grid-padding) + var(--offset) * 11);
 }
 
 [data-line-x="6"] {
-    left: calc(6vmin + 44vmin / var(--grid-size) * 13);
+    left: calc(var(--grid-padding) + var(--offset) * 13);
 }
 
 @media screen and (orientation: landscape) {
     [data-line-y] {
-        left: calc((100vmax - 100vmin) / 2);
+        left: 0;
     }
 
     [data-line-y="0"] {
-        top: calc(6vmin + 44vmin / var(--grid-size) * 1);
+        top: calc(var(--grid-padding) + var(--offset) * 1);
     }
     
     [data-line-y="1"] {
-        top: calc(6vmin + 44vmin / var(--grid-size) * 3);
+        top: calc(var(--grid-padding) + var(--offset) * 3);
     }
     
     [data-line-y="2"] {
-        top: calc(6vmin + 44vmin / var(--grid-size) * 5);
+        top: calc(var(--grid-padding) + var(--offset) * 5);
     }
     
     [data-line-y="3"] {
-        top: calc(6vmin + 44vmin / var(--grid-size) * 7);
+        top: calc(var(--grid-padding) + var(--offset) * 7);
     }
     
     [data-line-y="4"] {
-        top: calc(6vmin + 44vmin / var(--grid-size) * 9);
+        top: calc(var(--grid-padding) + var(--offset) * 9);
     }
     
     [data-line-y="5"] {
-        top: calc(6vmin + 44vmin / var(--grid-size) * 11);
+        top: calc(var(--grid-padding) + var(--offset) * 11);
     }
     
     [data-line-y="6"] {
-        top: calc(6vmin + 44vmin / var(--grid-size) * 13);
+        top: calc(var(--grid-padding) + var(--offset) * 13);
     }
 
     [data-line-x] {
@@ -215,30 +219,30 @@ select[name="board_size"] {
     }
     
     [data-line-x="0"] {
-        left: calc((100vmax - 100vmin) / 2 + 6vmin + 44vmin / var(--grid-size) * 1);
+        left: calc(var(--grid-padding) + var(--offset) * 1);
     }
     
     [data-line-x="1"] {
-        left: calc((100vmax - 100vmin) / 2 + 6vmin + 44vmin / var(--grid-size) * 3);
+        left: calc(var(--grid-padding) + var(--offset) * 3);
     }
     
     [data-line-x="2"] {
-        left: calc((100vmax - 100vmin) / 2 + 6vmin + 44vmin / var(--grid-size) * 5);
+        left: calc(var(--grid-padding) + var(--offset) * 5);
     }
     
     [data-line-x="3"] {
-        left: calc((100vmax - 100vmin) / 2 + 6vmin + 44vmin / var(--grid-size) * 7);
+        left: calc(var(--grid-padding) + var(--offset) * 7);
     }
     
     [data-line-x="4"] {
-        left: calc((100vmax - 100vmin) / 2 + 6vmin + 44vmin / var(--grid-size) * 9);
+        left: calc(var(--grid-padding) + var(--offset) * 9);
     }
     
     [data-line-x="5"] {
-        left: calc((100vmax - 100vmin) / 2 + 6vmin + 44vmin / var(--grid-size) * 11);
+        left: calc(var(--grid-padding) + var(--offset) * 11);
     }
     
     [data-line-x="6"] {
-        left: calc((100vmax - 100vmin) / 2 + 6vmin + 44vmin / var(--grid-size) * 13);
+        left: calc(var(--grid-padding) + var(--offset) * 13);
     }
 }
